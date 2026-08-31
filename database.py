@@ -7,9 +7,7 @@ load_dotenv()
 
 db_connection_string = os.getenv("DB_CONNECTION_STRING")
 
-ca_cert_path = r"C:/Users/dguai/Downloads/isrgrootx1.pem"
-
-engine = create_engine(db_connection_string, connect_args={"ssl": {"ca": ca_cert_path}})
+engine = create_engine(db_connection_string, connect_args={"ssl": {}})
 
 
 def load_jobs_from_db():
