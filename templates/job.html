@@ -4,23 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ job['title'] }} | David Alejandro Guaicha</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    {% include 'bootstrap.html' %}
   </head>
   <body class="bg-light text-dark">
+    {% include 'nav.html' %}
+
     <main class="container py-5">
-      <a class="btn btn-link px-0 mb-4" href="{{ url_for('hello_world') }}">
-        &larr; Back to jobs
-      </a>
-      <section class="card border-0 shadow-sm">
-        <div class="card-body p-4">
-          <h1 class="h2">{{ job['title'] }}</h1>
-          <p class="text-secondary mb-2"><b>Location:</b> {{ job['location'] }}</p>
-          <p class="text-secondary mb-0"><b>Salary:</b> {{ job['salary'] }}</p>
+      <a class="btn btn-link px-0 mb-4" href="{{ url_for('hello_world') }}">&larr; Back to jobs</a>
+      <section class="card border-0 shadow-sm overflow-hidden">
+        <div class="card-body p-4 p-md-5">
+          <p class="text-primary fw-semibold text-uppercase mb-2">Open position</p>
+          <h1 class="display-6 fw-bold mb-4">{{ job['title'] }}</h1>
+          <div class="row g-3 mb-5">
+            <div class="col-md-6">
+              <div class="bg-light rounded-3 p-3 h-100"><span class="small text-secondary d-block">Location</span><strong>{{ job['location'] }}</strong></div>
+            </div>
+            <div class="col-md-6">
+              <div class="bg-light rounded-3 p-3 h-100"><span class="small text-secondary d-block">Salary</span><strong>{{ job['currency'] }} {{ job['salary'] }}</strong></div>
+            </div>
+          </div>
+          <div class="mb-4">
+            <h2 class="h4 fw-bold">Responsibilities</h2>
+            <p class="text-secondary mb-0">{{ job['responsibilities'] }}</p>
+          </div>
+          <div class="mb-5">
+            <h2 class="h4 fw-bold">Requirements</h2>
+            <p class="text-secondary mb-0">{{ job['requirements'] }}</p>
+          </div>
+          <a class="btn btn-primary btn-lg" href="mailto:dguaichaalejandro@gmail.com?subject=Job%20application">Apply for this role</a>
         </div>
       </section>
     </main>
+
+    {% include 'footer.html' %}
   </body>
 </html>
